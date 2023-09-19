@@ -1,2 +1,2 @@
 # ImageCropper
-simple image cropping application
+A simple image cropping application.
