@@ -32,18 +32,7 @@ namespace ImageCropper
           {
             string filePath = ofd.FileNames[i];
 
-            if (File.Exists(filePath))
-            {
-              TabPage newTabPage = new(Path.GetFileName(filePath));
-              UC_ImageEdit imageEdit = new(filePath)
-              {
-                Dock = DockStyle.Fill
-              };
-
-              newTabPage.Controls.Add(imageEdit);
-
-              tabControl1.TabPages.Add(newTabPage);
-            }
+            OpenFile(filePath);
           }
         }
       }
@@ -113,6 +102,22 @@ namespace ImageCropper
 
     #endregion
 
+    private void OpenFile(string filePath)
+    {
+      if (File.Exists(filePath) && filePath.EndsWith(".jpg"))
+      {
+        TabPage newTabPage = new(Path.GetFileName(filePath));
+        UC_ImageEdit imageEdit = new(filePath)
+        {
+          Dock = DockStyle.Fill
+        };
+
+        newTabPage.Controls.Add(imageEdit);
+
+        tabControl1.TabPages.Add(newTabPage);
+      }
+    }
+
     /// <summary>
     /// function for safely close a tab page
     /// </summary>
@@ -131,5 +136,26 @@ namespace ImageCropper
         }
       }
     }
+
+    #region drag and drop event listeners
+
+    private void MainWindow_DragDrop(object sender, DragEventArgs e)
+    {
+      if (e != null && e.Data != null)
+      {
+        string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+        foreach (string file in files)
+          OpenFile(file);
+      }
+    }
+
+    private void MainWindow_DragEnter(object sender, DragEventArgs e)
+    {
+      if (e != null && e.Data != null && e.Data.GetDataPresent(DataFormats.FileDrop))
+        e.Effect = DragDropEffects.Copy;
+    }
+
+    #endregion
   }
 }
