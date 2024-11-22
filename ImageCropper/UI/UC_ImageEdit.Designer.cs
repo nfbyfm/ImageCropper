@@ -28,118 +28,143 @@
     /// </summary>
     private void InitializeComponent()
     {
-      imagePanel = new PictureBox();
-      tableLayoutPanel1 = new TableLayoutPanel();
-      label2 = new Label();
-      trackBar_Brightness = new TrackBar();
-      label3 = new Label();
-      trackBar_Contrast = new TrackBar();
-      ((System.ComponentModel.ISupportInitialize)imagePanel).BeginInit();
-      tableLayoutPanel1.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)trackBar_Brightness).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)trackBar_Contrast).BeginInit();
-      SuspendLayout();
+      this.imagePanel = new System.Windows.Forms.PictureBox();
+      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.label2 = new System.Windows.Forms.Label();
+      this.trackBar_Brightness = new System.Windows.Forms.TrackBar();
+      this.label3 = new System.Windows.Forms.Label();
+      this.trackBar_Contrast = new System.Windows.Forms.TrackBar();
+      this.label1 = new System.Windows.Forms.Label();
+      this.cB_RotateFlip = new System.Windows.Forms.ComboBox();
+      ((System.ComponentModel.ISupportInitialize)(this.imagePanel)).BeginInit();
+      this.tableLayoutPanel1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.trackBar_Brightness)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.trackBar_Contrast)).BeginInit();
+      this.SuspendLayout();
       // 
       // imagePanel
       // 
-      imagePanel.BackColor = Color.Transparent;
-      tableLayoutPanel1.SetColumnSpan(imagePanel, 2);
-      imagePanel.Dock = DockStyle.Fill;
-      imagePanel.Location = new Point(3, 3);
-      imagePanel.Name = "imagePanel";
-      imagePanel.Size = new Size(682, 387);
-      imagePanel.SizeMode = PictureBoxSizeMode.Zoom;
-      imagePanel.TabIndex = 0;
-      imagePanel.TabStop = false;
-      imagePanel.Paint += ImagePanel_Paint;
-      imagePanel.MouseDown += imagePanel_MouseDown;
-      imagePanel.MouseMove += imagePanel_MouseMove;
-      imagePanel.MouseUp += imagePanel_MouseUp;
+      this.imagePanel.BackColor = System.Drawing.Color.Transparent;
+      this.tableLayoutPanel1.SetColumnSpan(this.imagePanel, 2);
+      this.imagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.imagePanel.Location = new System.Drawing.Point(3, 3);
+      this.imagePanel.Name = "imagePanel";
+      this.imagePanel.Size = new System.Drawing.Size(682, 360);
+      this.imagePanel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+      this.imagePanel.TabIndex = 0;
+      this.imagePanel.TabStop = false;
+      this.imagePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ImagePanel_Paint);
+      this.imagePanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.imagePanel_MouseDown);
+      this.imagePanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imagePanel_MouseMove);
+      this.imagePanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imagePanel_MouseUp);
       // 
       // tableLayoutPanel1
       // 
-      tableLayoutPanel1.ColumnCount = 2;
-      tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 86F));
-      tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-      tableLayoutPanel1.Controls.Add(imagePanel, 0, 0);
-      tableLayoutPanel1.Controls.Add(label2, 0, 1);
-      tableLayoutPanel1.Controls.Add(trackBar_Brightness, 1, 1);
-      tableLayoutPanel1.Controls.Add(label3, 0, 2);
-      tableLayoutPanel1.Controls.Add(trackBar_Contrast, 1, 2);
-      tableLayoutPanel1.Dock = DockStyle.Fill;
-      tableLayoutPanel1.Location = new Point(0, 0);
-      tableLayoutPanel1.Name = "tableLayoutPanel1";
-      tableLayoutPanel1.RowCount = 3;
-      tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-      tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
-      tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
-      tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-      tableLayoutPanel1.Size = new Size(688, 447);
-      tableLayoutPanel1.TabIndex = 1;
+      this.tableLayoutPanel1.ColumnCount = 2;
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel1.Controls.Add(this.imagePanel, 0, 0);
+      this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
+      this.tableLayoutPanel1.Controls.Add(this.trackBar_Brightness, 1, 1);
+      this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
+      this.tableLayoutPanel1.Controls.Add(this.trackBar_Contrast, 1, 2);
+      this.tableLayoutPanel1.Controls.Add(this.label1, 0, 3);
+      this.tableLayoutPanel1.Controls.Add(this.cB_RotateFlip, 1, 3);
+      this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+      this.tableLayoutPanel1.RowCount = 4;
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(688, 447);
+      this.tableLayoutPanel1.TabIndex = 1;
       // 
       // label2
       // 
-      label2.AutoSize = true;
-      label2.Dock = DockStyle.Fill;
-      label2.Location = new Point(3, 393);
-      label2.Name = "label2";
-      label2.Size = new Size(80, 27);
-      label2.TabIndex = 2;
-      label2.Text = "Brightness:";
-      label2.TextAlign = ContentAlignment.MiddleLeft;
+      this.label2.AutoSize = true;
+      this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label2.Location = new System.Drawing.Point(3, 366);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(80, 27);
+      this.label2.TabIndex = 2;
+      this.label2.Text = "Brightness:";
+      this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // trackBar_Brightness
       // 
-      trackBar_Brightness.Dock = DockStyle.Fill;
-      trackBar_Brightness.LargeChange = 10;
-      trackBar_Brightness.Location = new Point(89, 396);
-      trackBar_Brightness.Maximum = 100;
-      trackBar_Brightness.Minimum = -100;
-      trackBar_Brightness.Name = "trackBar_Brightness";
-      trackBar_Brightness.Size = new Size(596, 21);
-      trackBar_Brightness.SmallChange = 5;
-      trackBar_Brightness.TabIndex = 3;
-      trackBar_Brightness.TickFrequency = 5;
-      trackBar_Brightness.Scroll += SetBrightnessAndContrast;
+      this.trackBar_Brightness.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.trackBar_Brightness.LargeChange = 10;
+      this.trackBar_Brightness.Location = new System.Drawing.Point(89, 369);
+      this.trackBar_Brightness.Maximum = 100;
+      this.trackBar_Brightness.Minimum = -100;
+      this.trackBar_Brightness.Name = "trackBar_Brightness";
+      this.trackBar_Brightness.Size = new System.Drawing.Size(596, 21);
+      this.trackBar_Brightness.SmallChange = 5;
+      this.trackBar_Brightness.TabIndex = 3;
+      this.trackBar_Brightness.TickFrequency = 5;
+      this.trackBar_Brightness.ValueChanged += new System.EventHandler(this.SetBrightnessAndContrast);
       // 
       // label3
       // 
-      label3.AutoSize = true;
-      label3.Dock = DockStyle.Fill;
-      label3.Location = new Point(3, 420);
-      label3.Name = "label3";
-      label3.Size = new Size(80, 27);
-      label3.TabIndex = 4;
-      label3.Text = "Contrast:";
-      label3.TextAlign = ContentAlignment.MiddleLeft;
+      this.label3.AutoSize = true;
+      this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label3.Location = new System.Drawing.Point(3, 393);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(80, 27);
+      this.label3.TabIndex = 4;
+      this.label3.Text = "Contrast:";
+      this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // trackBar_Contrast
       // 
-      trackBar_Contrast.Dock = DockStyle.Fill;
-      trackBar_Contrast.LargeChange = 10;
-      trackBar_Contrast.Location = new Point(89, 423);
-      trackBar_Contrast.Maximum = 100;
-      trackBar_Contrast.Minimum = -100;
-      trackBar_Contrast.Name = "trackBar_Contrast";
-      trackBar_Contrast.Size = new Size(596, 21);
-      trackBar_Contrast.SmallChange = 5;
-      trackBar_Contrast.TabIndex = 5;
-      trackBar_Contrast.TickFrequency = 5;
-      trackBar_Contrast.Scroll += SetBrightnessAndContrast;
+      this.trackBar_Contrast.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.trackBar_Contrast.LargeChange = 10;
+      this.trackBar_Contrast.Location = new System.Drawing.Point(89, 396);
+      this.trackBar_Contrast.Maximum = 100;
+      this.trackBar_Contrast.Minimum = -100;
+      this.trackBar_Contrast.Name = "trackBar_Contrast";
+      this.trackBar_Contrast.Size = new System.Drawing.Size(596, 21);
+      this.trackBar_Contrast.SmallChange = 5;
+      this.trackBar_Contrast.TabIndex = 5;
+      this.trackBar_Contrast.TickFrequency = 5;
+      this.trackBar_Contrast.ValueChanged += new System.EventHandler(this.SetBrightnessAndContrast);
+      // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label1.Location = new System.Drawing.Point(3, 420);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(80, 27);
+      this.label1.TabIndex = 6;
+      this.label1.Text = "rotate / flip:";
+      this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // cB_RotateFlip
+      // 
+      this.cB_RotateFlip.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.cB_RotateFlip.FormattingEnabled = true;
+      this.cB_RotateFlip.Location = new System.Drawing.Point(89, 423);
+      this.cB_RotateFlip.Name = "cB_RotateFlip";
+      this.cB_RotateFlip.Size = new System.Drawing.Size(201, 23);
+      this.cB_RotateFlip.TabIndex = 7;
       // 
       // UC_ImageEdit
       // 
-      AutoScaleDimensions = new SizeF(7F, 15F);
-      AutoScaleMode = AutoScaleMode.Font;
-      Controls.Add(tableLayoutPanel1);
-      Name = "UC_ImageEdit";
-      Size = new Size(688, 447);
-      ((System.ComponentModel.ISupportInitialize)imagePanel).EndInit();
-      tableLayoutPanel1.ResumeLayout(false);
-      tableLayoutPanel1.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)trackBar_Brightness).EndInit();
-      ((System.ComponentModel.ISupportInitialize)trackBar_Contrast).EndInit();
-      ResumeLayout(false);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.tableLayoutPanel1);
+      this.Name = "UC_ImageEdit";
+      this.Size = new System.Drawing.Size(688, 447);
+      ((System.ComponentModel.ISupportInitialize)(this.imagePanel)).EndInit();
+      this.tableLayoutPanel1.ResumeLayout(false);
+      this.tableLayoutPanel1.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.trackBar_Brightness)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.trackBar_Contrast)).EndInit();
+      this.ResumeLayout(false);
+
     }
 
     #endregion
@@ -150,5 +175,7 @@
     private TrackBar trackBar_Brightness;
     private Label label3;
     private TrackBar trackBar_Contrast;
-  }
+        private Label label1;
+        private ComboBox cB_RotateFlip;
+    }
 }

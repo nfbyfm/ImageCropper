@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace ImageCropper
@@ -119,7 +120,7 @@ namespace ImageCropper
     }
 
     /// <summary>
-    /// function for safely close a tab page
+    /// function for safely closing a tab page
     /// </summary>
     /// <param name="page"></param>
     private static void CloseImageEdit(TabPage page)
@@ -154,6 +155,44 @@ namespace ImageCropper
     {
       if (e != null && e.Data != null && e.Data.GetDataPresent(DataFormats.FileDrop))
         e.Effect = DragDropEffects.Copy;
+    }
+
+    #endregion
+
+    #region image rotation functions
+    private bool GetCurrentImageEditControl([NotNullWhen(true)] out UC_ImageEdit? editControl)
+    {
+      editControl = null;
+
+      if (tabControl1.SelectedTab == null)
+        return false;
+
+      return GetImageEditControl(tabControl1.SelectedTab, out editControl);
+    }
+
+    private static bool GetImageEditControl(TabPage page, out UC_ImageEdit? editControl)
+    {
+      editControl = null;
+
+      if (page.Controls == null || page.Controls.Count == 0)
+        return false;
+
+      foreach(var subControl in page.Controls)
+      {
+        if(subControl.GetType() == typeof(UC_ImageEdit))
+        {
+          editControl = (UC_ImageEdit)subControl;
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    private void rotate90DegreesToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      if (GetCurrentImageEditControl(out var imageEditControl))
+        imageEditControl.SwitchToNextRotationFlipType();
     }
 
     #endregion

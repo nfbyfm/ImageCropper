@@ -8,7 +8,7 @@ namespace ImageCropper
   {
     private string _filePath;
     private Image? _image;
-
+    
     public UC_ImageEdit(string filePath)
     {
       InitializeComponent();
@@ -18,6 +18,19 @@ namespace ImageCropper
       _filePath = filePath;
 
       LoadImage();
+
+      List<RotateFlipType> rotateFlipTypes = new()
+      {
+        RotateFlipType.RotateNoneFlipNone,
+        RotateFlipType.Rotate90FlipNone,
+        RotateFlipType.Rotate180FlipNone,
+        RotateFlipType.Rotate270FlipNone
+      };
+
+      foreach (var enumValue in rotateFlipTypes)
+        cB_RotateFlip.Items.Add(enumValue);
+      
+      cB_RotateFlip.SelectedIndex = 0;
     }
 
     internal void Close()
@@ -58,21 +71,21 @@ namespace ImageCropper
           string saveFilePath = GetSaveFilePath(_filePath);
 
           Rectangle cropRectangle = GetCropRectangle(_mouseDownLocation, _mouseUpLocation, _image);
+          Image croppedImage;
 
           if (trackBar_Brightness.Value != 0 || trackBar_Contrast.Value != 0)
+            croppedImage = _image.GetCroppedImage(cropRectangle, trackBar_Brightness.Value * 0.01f, trackBar_Contrast.Value);
+          else
+            croppedImage = _image.GetCroppedImage(cropRectangle);
+
+          if(Enum.TryParse<RotateFlipType>(cB_RotateFlip.Text, out var rotationType) 
+            && rotationType != RotateFlipType.RotateNoneFlipNone)
           {
-            using (Image croppedImage = _image.GetCroppedImage(cropRectangle, trackBar_Brightness.Value * 0.01f, trackBar_Contrast.Value))
-            {
-              croppedImage.Save(saveFilePath, ImageFormat.Jpeg);
-            }
+            croppedImage.RotateFlip(rotationType);
+            croppedImage.Save(saveFilePath, ImageFormat.Jpeg);
           }
           else
-          {
-            using (Image croppedImage = _image.GetCroppedImage(cropRectangle))
-            {
-              croppedImage.Save(saveFilePath, ImageFormat.Jpeg);
-            }
-          }
+            croppedImage.Save(saveFilePath, ImageFormat.Jpeg);
 
           MessageBox.Show($"Successfully saved image to '{saveFilePath}'.", "Save image to file", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -196,8 +209,6 @@ namespace ImageCropper
 
     #region brightness and contrast
 
-
-
     private void SetBrightnessAndContrast(object sender, EventArgs e)
     {
       if (_image != null)
@@ -208,5 +219,23 @@ namespace ImageCropper
 
     #endregion
 
+    #region rotation functions
+    internal void SwitchToNextRotationFlipType()
+    {
+      if (cB_RotateFlip.InvokeRequired)
+        cB_RotateFlip.BeginInvoke(() => SwitchToNextRotationFlipType);
+      else
+      {
+        var currentIndex = cB_RotateFlip.SelectedIndex;
+        if (currentIndex + 1 >= cB_RotateFlip.Items.Count)
+          cB_RotateFlip.SelectedIndex = 0;
+        else
+          cB_RotateFlip.SelectedIndex = currentIndex + 1;
+
+        cB_RotateFlip.Invalidate();
+      }
+    }
+
+    #endregion
   }
 }
